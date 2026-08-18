@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GameNexus 3D | Ultimate Game Database</title>
+<meta name="description" content="GameNexus 3D - discover and explore thousands of video games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="space"></canvas>
+<div class="noise"></div>
+<div id="toast"></div>
+
+<header class="nav">
+  <a class="brand" href="#"><span class="brand-mark">✦</span> GAMENEXUS <b>3D</b></a>
+  <nav>
+    <a href="#discover">Discover</a><a href="#pc">Can I Run It?</a><a href="#library">Library</a>
+  </nav>
+  <button class="icon-btn" id="themeBtn" title="Toggle visual intensity">◉</button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span></span> THE NEXT-GEN GAME DATABASE</div>
+    <h1>ENTER THE<br><em>GAMEVERSE.</em></h1>
+    <p>Explore thousands of games, check hardware compatibility, build your library and discover what to play next.</p>
+    <div class="hero-search">
+      <span>⌕</span><input id="heroSearch" placeholder="Search games, genres, platforms..." autocomplete="off"><kbd>ENTER</kbd>
+    </div>
+    <div class="hero-actions"><button class="primary" onclick="document.querySelector('#discover').scrollIntoView({behavior:'smooth'})">Explore Games →</button><button class="ghost" onclick="document.querySelector('#pc').scrollIntoView({behavior:'smooth'})">Can My PC Run It?</button></div>
+  </div>
+  <div class="hero-orbit">
+    <div class="orbit o1"></div><div class="orbit o2"></div><div class="planet"><span>GAME<br>VERSE</span></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div><strong>500K+</strong><span>Games indexed</span></div><div><strong>50+</strong><span>Platforms</span></div><div><strong>100K+</strong><span>Ratings</span></div><div><strong>∞</strong><span>Discoveries</span></div>
+</section>
+
+<section id="discover" class="section">
+  <div class="section-head"><div><span class="label">01 / DISCOVER</span><h2>Find your next obsession</h2></div>
+    <div class="filters"><select id="genre"><option value="">All genres</option><option>Action</option><option>RPG</option><option>Adventure</option><option>Strategy</option><option>Shooter</option><option>Racing</option></select><select id="sort"><option value="-rating">Top rated</option><option value="-released">Newest</option><option value="-added">Most popular</option></select></div>
+  </div>
+  <div id="games" class="game-grid"></div>
+  <div class="center"><button id="loadMore" class="ghost">Load more games</button></div>
+</section>
+
+<section id="pc" class="section pc-check">
+  <div class="pc-copy"><span class="label">02 / HARDWARE</span><h2>Can your PC<br>enter the gameverse?</h2><p>Enter your hardware and compare it with selected game requirements.</p></div>
+  <div class="pc-card">
+    <label>CPU <input id="cpu" value="Intel Core i5 / Ryzen 5"></label>
+    <label>GPU <input id="gpu" value="NVIDIA GTX 1060 / RX 580"></label>
+    <label>RAM <select id="ram"><option>8 GB</option><option selected>16 GB</option><option>32 GB</option><option>64 GB</option></select></label>
+    <label>Game <select id="pcgame"></select></label>
+    <button class="primary" id="checkPc">Analyze Compatibility</button>
+    <div id="pcResult"></div>
+  </div>
+</section>
+
+<section id="library" class="section library">
+  <div class="section-head"><div><span class="label">03 / YOUR LIBRARY</span><h2>Your games, your universe</h2></div></div>
+  <div id="libraryGrid" class="game-grid"></div>
+  <p id="emptyLibrary" class="empty">Your library is empty. Click ☆ on any game to save it.</p>
+</section>
+</main>
+
+<div id="modal" class="modal"><div class="modal-card"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div>
+<footer>GAMENEXUS 3D <span>•</span> Game discovery interface <span>•</span> Powered by RAWG when API is configured</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
